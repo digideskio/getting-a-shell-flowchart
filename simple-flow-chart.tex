@@ -28,9 +28,10 @@
     \node [block] (init) {In a hurry?};
     \node [titleblock, above of=init] {\Large \bf edunham's opinions on getting yourself a shell};
     \node [block, left of=init] (shell) {\bf ``I need a shell!"};
-    \node [block, below of=init] (real) {Real shell, or just persistent IRC?};
+    \node [block, below of=init] (real) {Persistent IRC, web hosting, or really a shell?};
     \node [cloud, right of=init] (stay) {Hang out in \#openshells, make friends, get vouched};
     \node [cloud, left of=real] (vector) {Check out vector.im};
+    \node [cloud, right of=real] (app) {Try oasis.sandstorm.io for dynamic applications, or GitHub Pages for a static site};
     \node [block, below of=real] (student) {Are you a student?};
     \node [block, right of=student] (edu) {Claim freebies at education. github.com};
     \node [block, below of=student] (five) {Got a spare \$5 per month?};
@@ -46,7 +47,8 @@
     \path [line] (init) -- node {No} (stay);
     \path [line] (init) -- node {Yes} (real);
     \path [line] (real) -- node {IRC} (vector);
-    \path [line] (real) -- node {Real shell} (student);
+    \path [line] (real) -- node {Web} (app);
+    \path [line] (real) -- node {Just a shell} (student);
     \path [line] (student) -- node {Yes} (edu);
     \path [line] (student) -- node {No} (five);
     \path [line] (edu) -- node {OK, I claimed it} (do);
