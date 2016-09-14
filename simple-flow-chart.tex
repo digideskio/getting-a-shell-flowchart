@@ -1,0 +1,55 @@
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+%%%<
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{5pt}%
+%%%>
+
+
+\begin{document}
+\pagestyle{empty}
+
+
+% Define block styles
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=6em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, rectangle, text centered, fill=green!20, text width=10em, minimum height=4em]
+
+\begin{tikzpicture}[node distance = 4cm, auto]
+    % Place nodes
+    \node [block] (init) {In a hurry?};
+    \node [block, left of=init] (shell) {``I need a shell!"};
+    \node [block, below of=init] (real) {Real shell, or just persistent IRC?};
+    \node [cloud, right of=init] (stay) {Hang out here, make friends, get vouched};
+    \node [cloud, left of=real] (vector) {Check out vector.im};
+    \node [block, below of=real] (student) {Are you a student?};
+    \node [block, right of=student] (edu) {Claim freebies at education. github.com};
+    \node [block, below of=student] (five) {Got a spare \$5 per month?};
+    \node [cloud, left of=five] (aws) {Google ``AWS Free Tier EC2"};
+    \node [cloud, below of=five] (vps) {Go rent a cheap VPS. Check out DigitalOcean and Linode.};
+    \node [cloud, below of=edu] (do) {There's 20 months worth of DigitalOcean credit in the pack. Go rent a VPS.};
+
+    % Draw edges
+    \path [line] (shell) -- (init);
+    \path [line] (init) -- node {No} (stay);
+    \path [line] (init) -- node {Yes} (real);
+    \path [line] (real) -- node {IRC} (vector);
+    \path [line] (real) -- node {Real shell} (student);
+    \path [line] (student) -- node {Yes} (edu);
+    \path [line] (student) -- node {No} (five);
+    \path [line] (edu) -- node {OK, I claimed it} (do);
+    \path [line] (five) -- node {No} (aws);
+    \path [line] (five) -- node {Yes} (vps);
+    % \path [line] () -- node {} ();
+
+
+\end{tikzpicture}
+
+
+\end{document}
