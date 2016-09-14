@@ -15,18 +15,21 @@
 \begin{document}
 \pagestyle{empty}
 
-
 % Define block styles
+\tikzstyle{titleblock} = [rectangle, draw, text width=30em, text centered, rounded corners, minimum height=4em]
 \tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=6em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{wideblock} = [rectangle, draw, fill=blue!20, text width=30em, text centered, rounded corners, minimum height=4em]
 \tikzstyle{line} = [draw, -latex']
 \tikzstyle{cloud} = [draw, rectangle, text centered, fill=green!20, text width=10em, minimum height=4em]
+\tikzstyle{widecloud} = [draw, rectangle, text centered, fill=green!20, text width=30em, minimum height=4em]
 
 \begin{tikzpicture}[node distance = 4cm, auto]
     % Place nodes
     \node [block] (init) {In a hurry?};
-    \node [block, left of=init] (shell) {``I need a shell!"};
+    \node [titleblock, above of=init] {\Large \bf edunham's opinions on getting yourself a shell};
+    \node [block, left of=init] (shell) {\bf ``I need a shell!"};
     \node [block, below of=init] (real) {Real shell, or just persistent IRC?};
-    \node [cloud, right of=init] (stay) {Hang out in #openshells, make friends, get vouched};
+    \node [cloud, right of=init] (stay) {Hang out in \#openshells, make friends, get vouched};
     \node [cloud, left of=real] (vector) {Check out vector.im};
     \node [block, below of=real] (student) {Are you a student?};
     \node [block, right of=student] (edu) {Claim freebies at education. github.com};
@@ -34,6 +37,9 @@
     \node [cloud, left of=five] (aws) {Google ``AWS Free Tier EC2"};
     \node [cloud, below of=five] (vps) {Go rent a cheap VPS. Check out DigitalOcean and Linode.};
     \node [cloud, below of=edu] (do) {There's 20 months worth of DigitalOcean credit in the pack. Go rent a VPS.};
+    \node [wideblock, below of=vps] (seekrit) {I WANT TOTAL ANONYMITY RIGHT THIS MINUTE FOR ZERO EFFORT AND \$ZERO COST};
+    \node [widecloud, below of=seekrit] (nope) {No. If you ask very nicely, someone might explain why it's between infeasible and suicidal for anyone to offer such a service, but it'll take all day.};
+
 
     % Draw edges
     \path [line] (shell) -- (init);
@@ -46,10 +52,9 @@
     \path [line] (edu) -- node {OK, I claimed it} (do);
     \path [line] (five) -- node {No} (aws);
     \path [line] (five) -- node {Yes} (vps);
-    % \path [line] () -- node {} ();
+    \path [line] (seekrit) -- (nope);
 
 
 \end{tikzpicture}
-
 
 \end{document}
